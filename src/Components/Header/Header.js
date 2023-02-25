@@ -1,6 +1,7 @@
 import React from "react";
 import note from "../../assets/images/notes.png";
 import doubleTick from "../../assets/images/double-tick.png";
+import plusImage from "../../assets/images/plus.png";
 const Header = () => {
   return (
     <div>
@@ -13,7 +14,7 @@ const Header = () => {
         />
         <button
           type="submit"
-          className="appearance-none w-8 h-8 bg-[url('./images/plus.png')] bg-no-repeat bg-contain"
+          className={`appearance-none w-8 h-8 bg-[url('${plusImage}')] bg-no-repeat bg-contain`}
         ></button>
       </form>
 
