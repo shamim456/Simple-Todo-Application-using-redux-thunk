@@ -9,9 +9,14 @@ const Header = () => {
 
   const handleAddedTodo = (e) => {
     const text = e.target.todoText.value;
-    console.log(text);
-    e.preventDefault();
-    dispatch(addedTodo(text));
+    if (text === "") {
+      e.preventDefault();
+      return;
+    } else {
+      e.preventDefault();
+      dispatch(addedTodo(text));
+      e.target.reset();
+    }
   };
 
   return (
