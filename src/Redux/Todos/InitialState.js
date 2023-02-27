@@ -1,7 +1,7 @@
 const initialState = [
   {
     id: 0,
-    text: "Hello Shamim",
+    text: "Hello Shamim Hossen Hridoy",
     completed: true,
     color: "red",
   },

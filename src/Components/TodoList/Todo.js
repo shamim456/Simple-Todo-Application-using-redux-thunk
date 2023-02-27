@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import cancel from "../../assets/images/cancel.png";
 
 const Todo = ({ todo }) => {
