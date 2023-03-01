@@ -23,6 +23,18 @@ const TodosReducer = (state = initialState, action) => {
           id: todoIdGenerator(state),
         },
       ];
+
+    case TOGGLED:
+      return state.map((todo) => {
+        if (todo.id !== action.payload) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      });
     default:
       return state;
   }
