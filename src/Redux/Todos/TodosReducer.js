@@ -35,6 +35,17 @@ const TodosReducer = (state = initialState, action) => {
           completed: !todo.completed,
         };
       });
+
+    case REMOVE:
+      return state.filter((todo) => todo.id !== action.payload);
+
+    case ALLCOMPLETED:
+      return state.map((todo) => {
+        return {
+          ...todo,
+          completed: true,
+        };
+      });
     default:
       return state;
   }

@@ -1,14 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import cancel from "../../assets/images/cancel.png";
-import { toggled } from "../../Redux/Todos/ActionCreator";
+import { removeTodo, toggled } from "../../Redux/Todos/ActionCreator";
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
   const { id, text, completed, color } = todo;
+
   const handleStatusChange = (id) => {
     dispatch(toggled(id));
   };
+
+  const handleRemoveTodo = (id) => {
+    dispatch(removeTodo(id));
+  };
+
   return (
     <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
       <div
@@ -56,6 +62,7 @@ const Todo = ({ todo }) => {
         src={cancel}
         className="flex-shrink-0 w-4 h-4 ml-2 cursor-pointer"
         alt="Cancel"
+        onClick={() => handleRemoveTodo(id)}
       />
     </div>
   );
