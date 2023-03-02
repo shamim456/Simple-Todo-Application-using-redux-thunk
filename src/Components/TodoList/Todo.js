@@ -1,7 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import cancel from "../../assets/images/cancel.png";
-import { removeTodo, toggled } from "../../Redux/Todos/ActionCreator";
+import {
+  // colorSelect,
+  colorSelected,
+  removeTodo,
+  toggled,
+} from "../../Redux/Todos/ActionCreator";
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -13,6 +18,10 @@ const Todo = ({ todo }) => {
 
   const handleRemoveTodo = (id) => {
     dispatch(removeTodo(id));
+  };
+
+  const handleColorChange = (todoId, color) => {
+    dispatch(colorSelected(todoId, color));
   };
 
   return (
@@ -40,19 +49,28 @@ const Todo = ({ todo }) => {
 
       <div className="select-none flex-1 line-through">{text}</div>
 
-      <div
+      {/* <div
+        onClick={() => handleColorSelect(id, "green")}
         className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${
           color === "green" && "bg-green-500"
         }`}
+      ></div> */}
+      <div
+        className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer hover:bg-green-500 border-green-500 ${
+          color === "green" && "bg-green-500"
+        }`}
+        onClick={() => handleColorChange(id, "green")}
       ></div>
 
       <div
+        onClick={() => handleColorChange(id, "yellow")}
         className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-yellow-500 hover:bg-yellow-500 ${
           color === "yellow" && "bg-yellow-500"
         }`}
       ></div>
 
       <div
+        onClick={() => handleColorChange(id, "red")}
         className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointe r border-red-500 hover:bg-red-500 ${
           color === "red" && "bg-red-500"
         }`}

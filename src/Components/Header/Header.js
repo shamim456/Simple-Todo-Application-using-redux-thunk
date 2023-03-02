@@ -2,8 +2,12 @@ import React from "react";
 import note from "../../assets/images/notes.png";
 import doubleTick from "../../assets/images/double-tick.png";
 import plusImage from "../../assets/images/plus.png";
-import { useDispatch } from "react-redux";
-import { addedTodo, allCompleted } from "../../Redux/Todos/ActionCreator";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addedTodo,
+  allCompleted,
+  clearCompleted,
+} from "../../Redux/Todos/ActionCreator";
 const Header = () => {
   const dispatch = useDispatch();
 
@@ -18,10 +22,15 @@ const Header = () => {
       e.target.reset();
     }
   };
-
+  const todos = useSelector((state) => state.todos);
   const handleAllCompleted = () => {
     dispatch(allCompleted());
-    // console.log(stat)
+    console.log(todos);
+  };
+
+  const handleClearCompleted = () => {
+    dispatch(clearCompleted());
+    console.log('shamim')
   };
 
   return (
@@ -51,7 +60,9 @@ const Header = () => {
           <img className="w-4 h-4" src={doubleTick} alt="Complete" />
           <span>Complete All Tasks</span>
         </li>
-        <li className="cursor-pointer">Clear completed</li>
+        <li className="cursor-pointer" onClick={handleClearCompleted}>
+          Clear completed
+        </li>
       </ul>
     </div>
   );

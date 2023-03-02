@@ -34,15 +34,26 @@ export const clearCompleted = () => {
     type: CLEARCOMPLETED,
   };
 };
-export const colouSelect = (todoId, color) => {
+// export const colorSelect = (todoId, color) => {
+//   return {
+//     type: COLORSELECTE,
+//     payload: {
+//       todoId,
+//       color,
+//     },
+//   };
+// };
+
+export const colorSelected = (todoId, color) => {
   return {
-    type: COLORSELECTE,
-    payload: {
-      todoId,
-      color,
-    },
+      type: COLORSELECTE,
+      payload: {
+          todoId,
+          color,
+      },
   };
 };
+
 export const toggled = (todoId) => {
   return {
     type: TOGGLED,

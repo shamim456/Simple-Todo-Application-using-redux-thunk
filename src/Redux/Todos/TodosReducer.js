@@ -21,6 +21,7 @@ const TodosReducer = (state = initialState, action) => {
         {
           text: action.payload,
           id: todoIdGenerator(state),
+          completed: false,
         },
       ];
 
@@ -46,6 +47,24 @@ const TodosReducer = (state = initialState, action) => {
           completed: true,
         };
       });
+
+    case CLEARCOMPLETED:
+      return state.filter((todo) => !todo.completed);
+
+    case COLORSELECTE:
+      const { todoId, color } = action.payload;
+      return state.map((todo) => {
+        if (todo.id !== todoId) {
+          return todo;
+        }
+
+        return {
+          ...todo,
+          color: color,
+        };
+      });
+
+    // eslint-disable-next-line no-fallthrough
     default:
       return state;
   }
