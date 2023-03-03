@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import note from "../../assets/images/notes.png";
 import doubleTick from "../../assets/images/double-tick.png";
 import plusImage from "../../assets/images/plus.png";
@@ -9,42 +9,43 @@ import {
   clearCompleted,
 } from "../../Redux/Todos/ActionCreator";
 const Header = () => {
+  const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
 
-  const handleAddedTodo = (e) => {
-    const text = e.target.todoText.value;
-    if (text === "") {
-      e.preventDefault();
+  const handleTodoText = (e) => {
+    setTodoText(e.target.value);
+  };
+  const handleSubmitTodo = (e) => {
+    e.preventDefault();
+    if (todoText === "") {
       return;
     } else {
-      e.preventDefault();
-      dispatch(addedTodo(text));
-      e.target.reset();
+      dispatch(addedTodo(todoText));
+      setTodoText("");
     }
   };
-  const todos = useSelector((state) => state.todos);
   const handleAllCompleted = () => {
     dispatch(allCompleted());
-    console.log(todos);
   };
 
   const handleClearCompleted = () => {
     dispatch(clearCompleted());
-    console.log('shamim')
   };
 
   return (
     <div>
       <form
         className="flex items-center bg-gray-100 px-4 py-4 rounded-md"
-        onSubmit={handleAddedTodo}
+        onSubmit={handleSubmitTodo}
       >
         <img src={note} className="w-6 h-6" alt="Add todo" />
         <input
+          onChange={handleTodoText}
           type="text"
           placeholder="Type your todo"
           className="w-full text-lg px-4 py-1 border-none outline-none bg-gray-100 text-gray-500"
           name="todoText"
+          value={todoText}
         />
         <button
           type="submit"

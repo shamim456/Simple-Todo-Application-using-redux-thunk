@@ -47,7 +47,9 @@ const Todo = ({ todo }) => {
         )}
       </div>
 
-      <div className="select-none flex-1 line-through">{text}</div>
+      <div className={`select-none flex-1 ${completed && "line-through"}`}>
+        {text}
+      </div>
 
       {/* <div
         onClick={() => handleColorSelect(id, "green")}
