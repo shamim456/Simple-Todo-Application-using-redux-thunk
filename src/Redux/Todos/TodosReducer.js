@@ -8,6 +8,7 @@ import {
   CLEARCOMPLETED,
 } from "./ActionsType";
 
+//for generate unic Id
 const todoIdGenerator = (todos) => {
   const unicId = todos.reduce((maxId, todo) => Math.max(maxId, todo.id), -1);
   return unicId + 1;
