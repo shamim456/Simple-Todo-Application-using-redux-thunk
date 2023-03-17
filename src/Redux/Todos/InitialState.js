@@ -1,9 +1,2 @@
-const initialState = [
-  // {
-  //   id: 0,
-  //   text: "Hello Shamim Hossen Hridoy",
-  //   completed: true,
-  //   color: "red",
-  // },
-];
+const initialState = [];
 export default initialState;

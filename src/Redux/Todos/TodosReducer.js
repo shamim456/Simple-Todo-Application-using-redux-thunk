@@ -1,5 +1,6 @@
 import initialState from "./InitialState";
 import {
+  LOADED,
   ADDED,
   ALLCOMPLETED,
   REMOVE,
@@ -16,6 +17,9 @@ const todoIdGenerator = (todos) => {
 
 const TodosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOADED:
+      return action.payload;
+
     case ADDED:
       return [
         ...state,

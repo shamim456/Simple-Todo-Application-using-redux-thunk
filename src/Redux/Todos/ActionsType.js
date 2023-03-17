@@ -1,3 +1,4 @@
+export const LOADED = "todos/loaded";
 export const ADDED = "todos/added";
 export const REMOVE = "todos/remove";
 export const TOGGLED = "todos/toggled";
