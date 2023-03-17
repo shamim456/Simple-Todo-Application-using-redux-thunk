@@ -8,6 +8,7 @@ import {
   allCompleted,
   clearCompleted,
 } from "../../Redux/Todos/ActionCreator";
+import addTodo from "../../Redux/Todos/Thunk/addTodo";
 const Header = () => {
   const [todoText, setTodoText] = useState("");
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Header = () => {
     if (todoText === "") {
       return;
     } else {
-      dispatch(addedTodo(todoText));
+      dispatch(addTodo(todoText));
       setTodoText("");
     }
   };
