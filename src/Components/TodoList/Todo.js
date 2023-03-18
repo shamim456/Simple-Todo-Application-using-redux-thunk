@@ -7,8 +7,8 @@ import {
   removeTodo,
   toggled,
 } from "../../Redux/Todos/ActionCreator";
+import colorSelect from "../../Redux/Todos/Thunk/colorSelect";
 import updateStatus from "../../Redux/Todos/Thunk/updateStatus";
-
 
 const Todo = ({ todo }) => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Todo = ({ todo }) => {
   };
 
   const handleColorChange = (todoId, color) => {
-    dispatch(colorSelected(todoId, color));
+    dispatch(colorSelect(todoId, color));
   };
 
   return (
